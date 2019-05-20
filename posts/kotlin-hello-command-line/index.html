@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>My New Hugo Site  | Kotlin on command line</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.55.5" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="Kotlin on command line" />
+<meta property="og:description" content="This post introduces you to basic kotlin command line tools for compiling and running kotlin programs.
+We will:
+ Download kotlin command line tools Write a basic hello-world program in kotlin Compile and run the kotlin program  Download kotlin distribution On OS X, the preferred way is through Homebrew.
+$ brew update $ brew install kotlin  Verify install Run the following command on your terminal to verify if the installation succeeded." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/kotlin-hello-command-line/" />
+<meta property="article:published_time" content="2019-05-20T12:52:50&#43;05:30"/>
+<meta property="article:modified_time" content="2019-05-20T12:52:50&#43;05:30"/>
+
+<meta itemprop="name" content="Kotlin on command line">
+<meta itemprop="description" content="This post introduces you to basic kotlin command line tools for compiling and running kotlin programs.
+We will:
+ Download kotlin command line tools Write a basic hello-world program in kotlin Compile and run the kotlin program  Download kotlin distribution On OS X, the preferred way is through Homebrew.
+$ brew update $ brew install kotlin  Verify install Run the following command on your terminal to verify if the installation succeeded.">
+
+
+<meta itemprop="datePublished" content="2019-05-20T12:52:50&#43;05:30" />
+<meta itemprop="dateModified" content="2019-05-20T12:52:50&#43;05:30" />
+<meta itemprop="wordCount" content="822">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Kotlin on command line"/>
+<meta name="twitter:description" content="This post introduces you to basic kotlin command line tools for compiling and running kotlin programs.
+We will:
+ Download kotlin command line tools Write a basic hello-world program in kotlin Compile and run the kotlin program  Download kotlin distribution On OS X, the preferred way is through Homebrew.
+$ brew update $ brew install kotlin  Verify install Run the following command on your terminal to verify if the installation succeeded."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      My New Hugo Site
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Kotlin on command line</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-05-20T12:52:50&#43;05:30">May 20, 2019</time>      
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>This post introduces you to basic kotlin command line tools for compiling and running kotlin programs.</p>
+
+<p>We will:</p>
+
+<ol>
+<li>Download kotlin command line tools</li>
+<li>Write a basic hello-world program in kotlin</li>
+<li>Compile and run the kotlin program</li>
+</ol>
+
+<h2 id="download-kotlin-distribution">Download kotlin distribution</h2>
+
+<p>On OS X, the preferred way is through Homebrew.</p>
+
+<pre><code>$ brew update
+$ brew install kotlin
+</code></pre>
+
+<h2 id="verify-install">Verify install</h2>
+
+<p>Run the following command on your terminal to verify if the installation succeeded.</p>
+
+<pre><code>$ kotlin -version
+</code></pre>
+
+<h2 id="available-commands">Available commands</h2>
+
+<p>You should now have access to tools included in the distribution. The most basic and important are kotlin and kotlinc.</p>
+
+<p>The <code>kotlin</code> command is to run kotlin programs, or REPL (kotlin interactive shell).</p>
+
+<p>The <code>kotlinc</code> command is to compile kotlin source code.</p>
+
+<p>Run the following commands to see how to use them.</p>
+
+<pre><code>$ kotlin -help
+$ kotlinc -help
+</code></pre>
+
+<h2 id="kotlin-hello-world">Kotlin hello world</h2>
+
+<p>Let&rsquo;s write a basic hello world program in kotlin that we will compile and run.</p>
+
+<p>Our program will print out &lsquo;Hello, World!&rsquo; on the standard output, and also print greetings to any arguments passed to it.</p>
+
+<p>Let&rsquo;s create a new directory for this exercise. Our program will reside in a file named <strong>hello.kt</strong>.</p>
+
+<pre><code>$ mkdir kotlin-hello
+$ cd kotlin-hello
+$ touch hello.kt
+</code></pre>
+
+<p>Use your favorite editor to write the following program into hello.kt file.</p>
+
+<p><em>hello.kt</em></p>
+
+<pre><code>fun main(args: Array&lt;String&gt;) {
+    println(“Hello, World!”)
+    for (arg in args) {
+        println(“Hello, $arg!”)
+    }
+}
+</code></pre>
+
+<h2 id="compile">Compile</h2>
+
+<h3 id="compile-to-class-file">Compile to class file</h3>
+
+<p>Use the following command to compile your <strong>hello.kt</strong> program to a class file.</p>
+
+<pre><code>$ kotlinc hello.kt -d output
+</code></pre>
+
+<p>The <code>-d</code> option specifies the output directory for generated files.</p>
+
+<p>The output directory should now contain a class file named <strong>HelloKt.class</strong>, and some meta information inside a <strong>META-INF</strong> directory.</p>
+
+<p>The generated class file contains a class named <code>HelloKt</code>.</p>
+
+<p>You can run the program, i.e. execute the main function in the generated <code>HelloKt</code> class, using the <code>kotlin</code> command.</p>
+
+<p>You will also need to specify where to find the class, which is done using the <code>-classpath</code> option. The default value of classpath is &ldquo;.&rdquo; (current directory).</p>
+
+<p>Try the following command:</p>
+
+<pre><code>$ kotlin HelloKt
+error: could not find or load main class HelloKt
+</code></pre>
+
+<p>This resulted in an error because the <code>kotlin</code> command couldn&rsquo;t find any <code>HelloKt</code> class in the current directory (default classpath value).</p>
+
+<p>To run the command from the current directory, specify the classpath:</p>
+
+<pre><code>$ kotlin -classpath output HelloKt
+Hello, World!
+</code></pre>
+
+<p>Or, you can go to the output directory and run the command without specifying the classpath:</p>
+
+<pre><code>$ kotlin HelloKt
+Hello, World!
+</code></pre>
+
+<p>Our program can also print greetings to any arguments passed to it. Specify a few arguments spearated by space in the command:</p>
+
+<pre><code>$ kotlin HelloKt Bob Alice
+Hello, World!
+Hello, Bob!
+Hello, Alice!
+</code></pre>
+
+<p>Again, you can run the same command from the <strong>kotlin-hello</strong> directory by specifying the classpath:</p>
+
+<p>From the kotlin-hello directory:</p>
+
+<pre><code>$ kotlin -classpath output HelloKt Bob Alice
+Hello, World!
+Hello, Bob!
+Hello, Alice!
+</code></pre>
+
+<h3 id="compile-to-jar">Compile to jar</h3>
+
+<p>You can also use the <code>-d</code> option to compile your program to a jar archive, which is useful if you are creating a library.
+Jar format is just an archive for compiled class files.</p>
+
+<p>First, lets clear things up by deleting the outout directory containing the generated class files.</p>
+
+<pre><code>$ rm -rf output
+</code></pre>
+
+<p>Use the kotlinc command to compile to a .jar file:</p>
+
+<pre><code>$ kotlin hello.kt -d hello.jar
+</code></pre>
+
+<p>This generates a .jar file named <strong>hello.jar</strong>, which contains the compiled class <code>HelloKt</code> and some meta data.</p>
+
+<p>You can read the contents of a .jar file using the <code>jar</code> command. You&rsquo;ll need to have the jdk installed for this.</p>
+
+<pre><code>$ jar -tf hello.jar
+META-INF/MANIFEST.MF
+HelloKt.class
+META-INF/main.kotlin_module
+</code></pre>
+
+<p>Use the <code>kotlin</code> command to execute the program. You&rsquo;ll need to specify the .jar file as classpath.</p>
+
+<pre><code>$ kotlin -classpath hello.jar HelloKt
+Hello, World!
+</code></pre>
+
+<p>Again, specify some arguments for the program:</p>
+
+<pre><code>$ kotlin -classpath hello.jar HelloKt Bob Alice
+Hello, World!
+Hello, Bob!
+Hello, Alice!
+</code></pre>
+
+<p>Till now, we have compiled the kotlin source code we wrote without the kotlin runtime.
+Hence, the hello.jar library can be executed by the kotlin command, but the java launcher cannot run it.</p>
+
+<p>Try running the program with java launcher.</p>
+
+<pre><code>$ java -jar hello.jar
+Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError: kotlin/jvm/internal/Intrinsics
+    at HelloKt.main(hello.kt)
+Caused by: java.lang.ClassNotFoundException: kotlin.jvm.internal.Intrinsics
+    at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+    at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:335)
+    at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+    ... 1 more
+</code></pre>
+
+<p>This resulted in an error because the necessary kotlin runtime is not present in the compiled output or on the classpath.</p>
+
+<p>You can specify <code>-incude-runtime</code> option while compiling with kolinc to include the kotlin runtime with the compilation output.</p>
+
+<pre><code>$ kotlinc hello.kt -include-runtime -d hello.jar
+</code></pre>
+
+<p>Now, the generated hello.jar contains the kotlin runtime classes; its size is also considerably larger than the previous output.
+This archive is now a self-contained jvm application runnable by the java launcher.</p>
+
+<pre><code>$ java -jar hello.jar
+Hello, World!
+</code></pre>
+
+<p>Again, with arguments:</p>
+
+<pre><code>$ java -jar hello.jar Bob Alice
+Hello, World!
+Hello, Bob!
+Hello, Alice!
+</code></pre>
+
+<p>If you generate the library without the <code>-include-runtime</code> option, the kotlin runtime must be present on the classpath when using the library.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 My New Hugo Site
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
